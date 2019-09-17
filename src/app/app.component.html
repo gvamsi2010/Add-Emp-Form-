@@ -1,0 +1,75 @@
+<h1>Employee Form</h1>
+
+<form #EmpForm ="ngForm" (ngSubmit)="onFormSubmit(EmpForm)" >
+  
+
+<label>Employee Name :</label><br>
+<input id="name" name="EmpName" [(ngModel)]="Model.EmpName" required minlength="3" maxlength="30" pattern="[a-zA-Z ]*" #name="ngModel">
+<div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="name.errors.required">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors?.minlength">
+    Minimum length is 3.
+  </div>
+  <div *ngIf="name.errors?.pattern">
+    Allows only alphabets
+</div>
+ </div>
+<br>
+<label>Location :</label><br>
+<select  id="location" name="Location" [(ngModel)]="Model.Location" required minlength="3" pattern="[a-zA-Z ]*" #Location="ngModel">
+  <option value="Bangalore">Bangalore</option>
+  <option value="Chennai">Chennai</option>
+  <option value="Pune">Pune</option>
+  <option value="Hyderabad">Hyderabad</option>
+</select>
+<div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger">
+</div>
+<div *ngIf="Location.errors?.minlength">
+  Minimum length is 3.
+  </div>
+  <div *ngIf="name.errors?.pattern">
+    Allows only alphabets
+</div>
+<br>
+
+
+<label>Email:</label><br>
+
+<input  id="email" name="Email" [(ngModel)]="Model.Email" maxlength="30" minlength="3"  pattren ="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;" required #Email="ngModel"><br>
+<div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger">
+</div>
+<div *ngIf="Email.errors?.pattren">
+  Should be in email format.
+</div>
+
+
+
+<label>Mobile :</label><br>
+
+<input  id="mobile" name="Mobile" [(ngModel)]="Model.Mobile" maxlength="10"  minlength="3" pattern="^[0-9]$" required #Mobile="ngModel">
+<div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="Mobile.errors?.required">
+    Mobile is required.
+  </div>
+  <div *ngIf="Mobile.errors?.minlength">
+    Minimum length is 3.
+  </div>
+  <div *ngIf="Mobile.errors?.pattern">
+    Allows only Numbers
+</div>
+  </div>
+  <br>
+
+
+
+<button id="add" type="submit">Submit</button>
+
+</form>
